@@ -1,23 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Weather from "./Weather";
 
 function App() {
+  const [loading, setLoading] = useState(false);
+  const [text, setText] = useState("");
+  const [weather, setWeather] = useState({
+    localtime: "",
+    wind_dir: "",
+    temp: 0,
+    temp_max: 0,
+    temp_min: 0,
+    weather_icons: "",
+    weather_des: "",
+  });
+
+  useEffect(() => {
+    const load = async () => {
+      setLoading(true);
+
+      const response = await axios.get(
+        "http://api.weatherstack.com/current?access_key=f47104ca8a7d67b308fa0a2d2a017124&query=${text}"
+      );
+      setWeather({
+        localtime: response.data.location.localtime,
+        wind_dir: "",
+        temp: 0,
+        temp_max: 0,
+        temp_min: 0,
+        weather_icons: response.data.current.weather_icons[0],
+        weather_des: "",
+      });
+      console.log(weather.localtime);
+      console.log(weather.weather_icons);
+
+      setLoading(false);
+    };
+    load();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Weather weather={weather} />
     </div>
   );
 }

@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    /* background-color: aliceblue; */
+}
+#weather_container{
+    background-color: rgb(28, 189, 253);
+    height: 400px;
+    width: 100%;
+    
+}
+#weather_info{
+    padding:90px;
+    display: flex;
+    
+    flex-direction: row;
+    
+}
+
+.day_date{
+    position: relative;
+    padding: 20px;
+    font-size: 40px;
+    
+}
+.time{
+    position: absolute;
+    top: 182px;
+    left: 140px;
+    font-size: 55px;
+    
+}
+.temp{
+    position: relative;
+    font-size: 124px;
+    left: 103px;
+    top: -36px;
+}
+
+.weather_description{
+    position: relative;
+    top: 10px;
+    left: 218px;
+    font-size: 40px;
+}
+
+#max_min_temp{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    padding: 10px;
+    position: absolute;
+    top: 75%;
+    left: 37%;
+}
+.max_temp{
+    font-size: 28px;
+    padding: 10px;
+}
+.min_temp{
+    font-size: 28px;
+    padding: 10px;
+}
+
+#humidity_details{
+    display: flex;
+    position: absolute;
+    top: 104%;
+    right: 46%;
+}
+.humidity_data{
+    padding: 3px;
+    margin-left:56px ;
+    font-size: 25px;
+}
