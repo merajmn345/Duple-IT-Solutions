@@ -15,13 +15,13 @@ function Weather({ weather }) {
     return lineBreak;
   }
 
-  // function dayNight() {
-  //   if (weather.localtime.split(" ").slice(1, 3) > 12) {
-  //     return "AM";
-  //   } else {
-  //     return "PM";
-  //   }
-  // }
+  function dayNight() {
+    if (weather.localtime.split(" ").slice(1, 3) > 12) {
+      return "AM";
+    } else {
+      return "PM";
+    }
+  }
   return (
     <div id="weather_container">
       <div id="weather_info">
@@ -29,7 +29,7 @@ function Weather({ weather }) {
         <p className="time">
           {onlyTime(weather.localtime)}
 
-          {/* {dayNight(weather.localtime)} */}
+          {dayNight(weather.localtime)}
         </p>
         <p className="temp">{weather.temp}&deg;C</p>
         <div className="weather_description">
