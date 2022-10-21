@@ -5,8 +5,9 @@
     /* background-color: aliceblue; */
 }
 #weather_container{
+    padding: 10px 10px;
     background-color: rgb(28, 189, 253);
-    height: 400px;
+    /* height: 400px; */
     width: 100%;
     
 }

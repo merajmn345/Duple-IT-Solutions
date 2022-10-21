@@ -5,7 +5,6 @@ import Weather from "./Weather";
 
 function App() {
   const [loading, setLoading] = useState(false);
-  const [text, setText] = useState("");
   const [weather, setWeather] = useState({
     localtime: "",
     wind_dir: "",
@@ -13,7 +12,7 @@ function App() {
     temp_max: 0,
     temp_min: 0,
     weather_icons: "",
-    weather_des: "",
+    weather_descriptions: "",
   });
 
   useEffect(() => {
@@ -21,16 +20,17 @@ function App() {
       setLoading(true);
 
       const response = await axios.get(
-        "http://api.weatherstack.com/current?access_key=f47104ca8a7d67b308fa0a2d2a017124&query=${text}"
+        "http://api.weatherstack.com/current?access_key=f47104ca8a7d67b308fa0a2d2a017124&query=Bhopal"
       );
       setWeather({
         localtime: response.data.location.localtime,
-        wind_dir: "",
-        temp: 0,
+        wind_dir: response.data.current.wind_dir,
+        temp: response.data.current.temperature,
         temp_max: 0,
         temp_min: 0,
         weather_icons: response.data.current.weather_icons[0],
-        weather_des: "",
+        weather_descriptions: response.data.current.weather_descriptions,
+        query: response.data.request.query,
       });
       console.log(weather.localtime);
       console.log(weather.weather_icons);
